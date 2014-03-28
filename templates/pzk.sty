@@ -1,0 +1,170 @@
+% LaTeX format pro prijimaci zkousky na Gybon
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pzk}
+\pagestyle{empty}
+\usepackage{czech}
+%\usepackage[a4paper,left=2cm,right=2cm,nohead,nofoot,top=.5cm,bottom=2cm]{geometry}
+\usepackage{picins}
+\newif\ifpdf
+\ifx\pdfoutput \undefined
+   \pdffalse
+\else
+   \pdfoutput=1
+   \pdftrue
+\fi   
+\ifpdf 
+   \usepackage[pdftex]{graphicx}
+\else 
+   \usepackage{graphicx}
+\fi
+\unitlength=1mm
+% **************** definice hlavicky 1 *******************
+\def\Head{
+\renewcommand{\arraystretch}{1.2}
+\noindent
+\def\meritko{1}
+\def\imgbox{2.5cm}
+\ifpdf
+   \def\obr{\Logo.jpg}
+\else   
+   \def\obr{\Logo.eps}
+\fi
+\parpic[l][lt]%
+{\scalebox{\meritko}{\includegraphics{\obr}}} 
+{\centering%
+\baselineskip 11pt
+\def\pismxx{\scriptsize\sffamily}
+\def\pismxxx{\large\sffamily\bfseries}
+\resizebox{15cm}{3.5mm}{{\sc\Large \NazevGybon,}}\\[2mm]
+{\pismxxx\Adresa}\\
+\hrulefill\\
+{\pismxx Psè: \PscGybon\hfill Tel: \Tel\hfill Ièo: \Ico\hfill E-mail: \Mail\hfill Web: \Web}\\
+}
+\picskip{0}
+\noindent
+}
+% **************** definice hlavicky - bez tel, ico *******************
+\def\HeadBez{
+\renewcommand{\arraystretch}{1.2}
+\noindent
+\def\meritko{1}
+\def\imgbox{2.5cm}
+\ifpdf
+   \def\obr{\Logo.jpg}
+\else   
+   \def\obr{\Logo.eps}
+\fi
+\parpic[l][lt]%
+{\scalebox{\meritko}{\includegraphics{\obr}}} 
+{\centering%
+\baselineskip 11pt
+\def\pismxx{\scriptsize\sffamily}
+\def\pismxxx{\large\sffamily\bfseries}
+\resizebox{15cm}{3.5mm}{{\sc\Large \NazevGybon,}}\\[2mm]
+{\pismxxx\Adresa}\\
+\hrulefill\\
+}
+\picskip{0}
+\noindent
+}
+% ******************** zjednodusena hlavicka ******************
+\def\HeadSimple{
+\renewcommand{\arraystretch}{1.2}
+\noindent
+\def\meritko{.5}
+\def\imgbox{2.5cm}
+\ifpdf
+   \def\obr{\Logo.jpg}
+\else   
+   \def\obr{\Logo.eps}
+\fi
+%\parpic[l][lt]%
+%{\scalebox{\meritko}{\includegraphics{\obr}}} 
+{\centering%
+%\baselineskip 11pt
+\resizebox{15cm}{3.5mm}{{\sc\Large \NazevGybon}}\\[2mm]
+}
+%\mbox{}
+%\vspace{10mm}
+%\picskip{0}
+%\noindent
+}% ********************** definice hlavicky 2 ********************
+\def\HeadDva{
+\noindent
+\begin{center}\sc\large \NazevGybon, \Adresa\end{center}
+\hrulefill
+\par\vspace{1cm}
+\def\meritko{0.6}
+\def\imgboxx{6cm}
+\ifpdf
+   \parbox[c][][c]{\imgboxx}{\scalebox{\meritko}{\includegraphics{\Logo.jpg}}}
+\else 
+   \parbox[c][][c]{\imgboxx}{\scalebox{\meritko}{\includegraphics{\Logo.eps}}} 
+\fi
+\renewcommand{\arraystretch}{2.7}
+\def\TabPismo{\Large\bfseries\sffamily}
+\begin{tabular}[c]{|l|}
+\hline
+\TabPismo \pnazev{}\\
+\TabPismo \pulice{}\\
+\TabPismo \pmesto{}\\
+\TabPismo \ppsc{}\\
+\hline
+\end{tabular}
+\\[0.7cm]
+%\mbox{}\hrulefill
+{\small\sffamily VÁ© DOPIS ZNAÈKY/ZE DNE \hfill NA©E ZNAÈKA \hfill VYØIZUJE/LINKA \hfill HRADEC KRÁLOVÉ}\\[1cm]
+\vspace{1cm}
+}
+% ************** definice paticky stranky *********************
+\def\Foot{
+\renewcommand{\baselinestretch}{.7}
+\def\pis{\scriptsize}
+\vfill
+\noindent
+\hrulefill
+{\sffamily
+\begin{tabbing}
+\pis TELEFON\hspace{1cm}\= \pis \Tel\hspace{6cm}\= \pis Bankovní spojení\hspace{3.5cm}\= \pis IÈO\\
+\pis ØEDITEL \> \pis \TelReditel \> \pis \Banka \> \pis \Ico \\
+\pis FAX \> \pis \Fax \> \pis \Ucet \\
+\pis E-MAIL \> \pis \Mail \> \pis IZO: \Izo \\
+\pis WEB \> \pis \Web \\
+\end{tabbing}
+}
+\renewcommand{\baselinestretch}{1}
+}
+\newcommand{\Vec}[1]{{\sffamily\textbf{Vìc :}\hspace{1cm}#1\par\vspace{1cm}}}
+\newcommand{\ooo}[2]{%
+\unitlength=1mm
+\begin{picture}(0,0)(#1,#2)
+\line(1,0){3}
+\end{picture}
+}
+% ********** definice dat **************
+\def\NazevGybon{Gymnázium Bo¾eny Nìmcové}
+\def\Adresa{Hradec Králové, Pospí¹ilova tø. 324}
+\def\Fax{495\,514\,693}
+\def\Ico{62690043}
+\def\Tel{495\,514\,691-2}
+\def\Mail{gbn@gybon.cz}
+\def\Web{http://www.gybon.cz}
+\def\Logo{templates/gbnlogo}
+\def\Ucet{1939-511/0710}
+\def\Banka{Èeská národní banka HK}
+\def\Izo{062690043}
+\def\TelReditel{495\,511\,624}
+\def\PscGybon{500\,03}
+\def\Podpis{templates/podpis.jpg}
+% ***************************************
+\def\SirkaRamecku{11cm}
+\def\odsaz{\hspace{1cm}}
+\def\PNazev#1{\gdef\pnazev{\makebox[\SirkaRamecku][l]{\odsaz#1}}}
+\def\PUlice#1{\gdef\pulice{\odsaz#1}}
+\def\PMesto#1{\gdef\pmesto{\odsaz#1}}
+\def\PPsc#1{\gdef\ppsc{\odsaz#1}}
+%
+\gdef\pnazev{\makebox[\SirkaRamecku][l]{}}
+\gdef\pulice{}
+\gdef\pmesto{}
+\gdef\ppsc{}

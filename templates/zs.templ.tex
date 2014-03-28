@@ -1,0 +1,102 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% sablona pro vypis studentu pro ZS        %
+% PZK Gybon                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,left=2cm,right=2cm,nohead,nofoot,top=.5cm,bottom=2cm]{geometry}
+\usepackage{templates/pzk}
+\usepackage{supertabular}
+\usepackage{colortbl}
+\input{templates/defrec.tex}
+\input{<<vars>>}
+\def\isPrijat{\if 1\Prijat\sf\bfseries\fi}
+\newcommand{\hodnota}[1]{\isPrijat\if 4\Ucast -- \else #1 \fi}
+\def\AnoNe{\if 1\Prijat \isPrijat\ ano \else ne \fi}
+\def\BezPZK{\multicolumn{5}{c}{\footnotesize\sl uchazeè byl pøijat bez pøijímací zkou¹ky}}
+\def\BodyPZK{\hodnota{\Vstup} & \hodnota{\Cj} & \hodnota{\M}  & -- & \hodnota{\Celkem}}
+\def\BeznyRadek{%
+\centering\hodnota{\Poradi} & \isPrijat\Id & \isPrijat\Prijmeni\ \Jmeno & \isPrijat\Prefix & 
+\if 1\Ucast \BodyPZK 
+\else \if 3\Ucast \BodyPZK \else \BezPZK
+      \fi
+\fi 
+& \AnoNe \\ \hline
+}
+%**** zapati - ukonceni skoly *****
+\def\footZS{%
+\end{supertabular}
+\end{center}
+%{\footnotesize\sl * pokud není uvedeno poøadí, uchazeè byl pøijat bez pøijímací zkou¹ky}\\
+% vysvetlivky - typ studia
+\begin{minipage}[t]{\linewidth}
+\begin{center}
+{\footnotesize
+\begin{tabular}{|c|l|}
+\hline
+\rowcolor[gray]{.9}Typ&Pøijímací øízení do\\ \hline
+P&\stdP\\\hline
+%H&\stdH\\\hline
+S&\stdS\\\hline
+\end{tabular}}\\
+\vfill
+\mbox{}\hfill \reditel\\
+\mbox{}\hfilløeditel ¹koly
+\end{center}
+\end{minipage}
+}
+%***** zahlavi stranky -- zacatek nove ZS *****
+\def\headZS{%
+\ooo{20}{92}
+\Head\par
+\vspace{15mm}
+\noindent
+\mbox{}\hfill  
+{\sf\bfseries
+\raisebox{3mm}{
+\begin{tabular}[t]{|>{\columncolor[gray]{.92}}p{1cm}>{\columncolor[gray]{.92}}p{6cm}|}
+\hline
+&\Zsnazev\\
+&\Ulice\\
+&\Psc\ \Misto\\
+\hline
+\end{tabular}}\par}
+\vspace{3mm}
+\renewcommand{\arraystretch}{1.3}
+\begin{center}
+{\large\bfseries Seznam uchazeèù -- \Zsnazev}\\[2mm]
+\small
+\begin{supertabular}{p{1.5cm}rlccccccc}
+}
+\def\Report{%
+% ukonceni ZS - zapati
+\if +\Zps\footZS\newpage\fi
+% zacatek ZS - zahlavi
+\if *\Id \headZS \else \BeznyRadek \fi
+}
+\def\done{\Report}
+\def\nf#1{\bfseries #1}
+% zahlavi tabulky 
+\def\TabHead{%
+\rowcolor[gray]{.9}\centering\nf{Poøadí} & \nf{Id} & \nf{Pøíjmení a jméno} & \nf{Typ} & \nf{Vstup} & \nf{Èj} & \nf{M} & \nf{Cizj} & \nf{Celkem} & \nf{Pøijetí}
+}
+%*********************************************%
+% 				zacatek dokumentu                 %
+%*********************************************%
+\begin{document}
+\sf
+\tablefirsthead{%
+\hline\hline
+\TabHead\\ 
+\hline\hline}
+\tablehead{%
+\hline\hline
+\TabHead\\ 
+\hline\hline}
+\tabletail{%
+\hline
+\multicolumn{10}{r}{\dots\footnotesize\sl pokraèování na dal¹í stranì}\\
+}
+\tablelasttail{}
+\input{<<data>>}
+\footZS
+\end{document}

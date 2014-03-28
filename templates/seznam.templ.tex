@@ -1,0 +1,35 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% sablona pro vypis prijatych uchazecu
+% PZK Gybon                       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,left=3cm,right=3cm,nohead,nofoot,top=1cm,bottom=30mm]{geomet
+ry}
+\usepackage{templates/pzk}
+\usepackage{multicol}
+\pagestyle{empty}
+\input{templates/defrec.tex}
+\input{<<vars>>}
+\def\Report{%
+\noindent
+\Prijmeni\ \Jmeno\\
+}
+\def\done{\Report}
+%***********************************************%
+%		zacatek dokumentu 				            %
+%***********************************************%
+\begin{document}
+\columnseprule 0.4pt
+\columnsep 1cm
+\HeadSimple
+\vspace{1mm}
+\sf\Large\bfseries
+\begin{center}
+\large\textbf{Pøijímací zkou¹ky do \if 1\studium \stdP \fi\if 2\studium \stdH \fi\if 3\studium \stdS \fi, \kolo.~kolo}\\[12mm]
+{\huge\bfseries Seznam pøijatých ¾ákù}
+\end{center}
+\vspace{12mm}
+\begin{multicols}{2}
+\input{<<data>>}
+\end{multicols}
+\end{document}

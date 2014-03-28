@@ -1,0 +1,61 @@
+% kosilka pro studium T - postupove zkousky
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,left=1cm,right=1cm,nohead,nofoot,top=.5cm,bottom=2cm]{geometry}
+\usepackage{templates/pzk}
+\usepackage{colortbl}
+\input{templates/defrec.tex}
+\input{<<vars>>}
+
+\def\Report{
+%\ooo{20}{92}
+%\ooo{30}{188}
+\HeadBez\ \par
+\vspace{5mm}
+\begin{center}
+\resizebox{8cm}{6mm}{{\sf\Large \textbf{Pøijímací øízení \Rok}}}\\[10mm]
+{\sf\Large
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Spisová znaèka} & \SpisZn \\ \hline
+\textbf{Úèastník øízení} & \textbf{\Jmeno\ \Prijmeni} \\ \hline
+\textbf{Zahájení øízení dne} &  \\ \hline
+\textbf{Oprávnìná úøední osoba} & \reditel \\ \hline
+\end{tabular}}
+\end{center}
+\vspace{5mm}
+\noindent
+{\sf\large \textbf{Rozhodnutí nabylo právní moci dne:}}\\[15mm]
+Pøehled zalo¾ených dokumentù ve spisu:\\
+\begin{tabular}{|r|c|l|r|r|} \hline
+\bf P.\,è. & \bf È.\,jednací & \bf Název dokumentu & \bf Datum vlo¾ení dokumentu & \bf Poèet listù \\ \hline
+1. & \CjPrihl & Pøihlá¹ka ke studiu na støední ¹kole & & \\ \hline
+\if 4\Ucast 
+. & \CjPozv & Oznámení o~pøijetí bez zkou¹ky & & 1 \\ \hline
+3. & & Rozhodnutí øeditele ¹koly & & 1 \\  \hline
+4. & & & & \\ \hline
+5. & & & & \\ \hline
+\else
+2. & \CjPozv & Pozvánka k~pøijímacímu øízení & \terminPozvankaT & 1 \\ \hline
+3. & --- & Test z~èeského jazyka & \terminTNumI & 1 x A3 \\  \hline
+4. & --- & Test z~anglického jazyka & \terminTNumI &  \\  \hline
+5. & --- & Test z~matematiky & \terminTNumII &  \\  \hline
+6. & --- & Test z~cizího jazyka & \terminTNumII &  \\  \hline
+7. & --- & Test z~pøírodovìdného základu & \terminTNumIII &  \\  \hline
+8. & --- & Test z~obèanského základu & \terminTNumIII &  \\  \hline
+9. & & Rozhodnutí øeditele ¹koly & \terminRozhodnutiT & 1 \\  \hline
+\fi
+10. & & & & \\ \hline
+11. & & & & \\ \hline
+12. & & & & \\ \hline
+13. & & & & \\ \hline
+14. & & & & \\ \hline
+15. & & & & \\ \hline
+16. & & & & \\ \hline
+\end{tabular}
+\newpage
+}
+
+\begin{document}
+\def\done{\Report}
+\input{<<data>>}
+\end{document}

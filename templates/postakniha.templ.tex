@@ -1,0 +1,65 @@
+%----------------------------------------------------%
+% sablona pro knihu posty - pozvánka, rozhodnutí     %
+% PZK Gybon 2006                                     %
+%----------------------------------------------------%
+%
+% rozhodnuti -> kdyz je nastavemo macro \secure na 1
+%
+\documentclass[11pt]{report}
+\usepackage{templates/pzk}
+\usepackage[a4paper,left=5mm,right=5mm,top=2cm,bottom=10mm,nohead,nofoot]{geometry}
+\usepackage{supertabular}
+\def\typPozvanka{pozvánka}
+\def\typOznameni{oznámení}
+\def\typRozhodnuti{rozhodnutí}
+\def\adresa{\ZastPrijmeni\ \ZastJmeno, \Ulice, \Misto, \Psc}
+\def\jmenoZast{\ZastPrijmeni\ \ZastJmeno}
+\input{templates/defrec.tex}
+\input{<<vars>>}
+% telo tabulky - pozvanka
+\def\ReportPozvanka{\centering{\CjPozv} &  \centering{\terminPozvanka} & 
+\if 4\Ucast \centering{\typOznameni} \else \centering{\typPozvanka} \fi
+& \adresa \\ \hline}
+% telo tabulky - rozhodnuti
+\def\ReportRozhodnuti{\centering{\CjRozhod} &  \centering{\terminRozhodnuti} & 
+\centering{\typRozhodnuti} & 
+%\if 0\Prijat 
+	\if 0\Prevzal 
+		\adresa 
+	\else 
+		\jmenoZast\ -- \textit{osobnì pøevzal}
+	\fi 
+%\else
+%	\jmenoZast\ -- po¹ta/osobnì pøevzal
+%\fi 
+\\ \hline}
+\if 1\secure 
+	\def\done{\ReportRozhodnuti}
+\else  
+	\def\done{\ReportPozvanka}
+\fi  
+% zahlavi tabulky 
+\def\TabHead{\centering{È. j.} & \centering{Datum} & \centering{Typ} & Jméno a adresa}
+%--------------------------------------%
+%  zacatek dokumentu							%                
+%--------------------------------------%
+\begin{document}
+\noindent
+\begin{center}
+\sf
+\noindent
+\vspace{1mm}
+\noindent
+\renewcommand{\arraystretch}{1.3}
+\tablefirsthead{\hline\TabHead\\}
+\tablehead{\hline\TabHead\\}
+\tabletail{\hline}
+\tablelasttail{}
+\noindent
+%{\small
+\begin{supertabular}{|p{2cm}|p{3cm}|p{3cm}|p{8cm}|} \hline
+\input{<<data>>}
+\end{supertabular}
+%}
+\end{center}
+\end{document}

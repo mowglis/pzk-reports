@@ -1,0 +1,41 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% sablona pro seznnam pro odber rozhodnuti osbne
+% PZK Gybon
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,left=1cm,right=1cm,nohead,nofoot,top=15mm,bottom=15mm]{geometry}
+\usepackage{templates/pzk}
+\usepackage{supertabular}
+\usepackage{colortbl}
+\pagestyle{plain}
+\input{templates/defrec.tex}
+\input{<<vars>>}
+\renewcommand{\arraystretch}{1.2}
+\def\Report{%
+% bezny radek tabulky
+\Prijmeni\ \Jmeno & \CjRozhod & & & \\ \hline
+}
+\def\done{\Report}
+\def\nf#1{{\bfseries #1}}
+% zahlavi tabulky 
+\def\nadpis{\Large\bf Originál rozhodnutí pøevzal}
+\def\nadpisDva{\footnotesize Pøijímací zkou¹ky do \if 1\studium \stdP \else \stdS \fi}
+\def\TabHead{\multicolumn{5}{l}{\nadpis} \\ \multicolumn{5}{l}{\nadpisDva} \\ \hline \rowcolor[gray]{.9}\nf{Jméno uchazeèe}&\nf{È.j.}&\nf{Jméno a pøíjmení zák. zástupce}&\nf{Datum}&\nf{Podpis}}
+%\def\TabHead{}
+%*********************************************
+% 		zacatek dokumentu
+%*********************************************
+\begin{document}
+%\begin{center}
+%\sf\bfseries
+\noindent\Head\noindent\\[2mm]
+\noindent
+\tablefirsthead{\TabHead\\}
+\tablehead{\TabHead\\}
+\tabletail{\hline\multicolumn{5}{r}{\dots \footnotesize\sl pokraèování}\\}
+\tablelasttail{}
+\begin{supertabular}{|p{4cm}|l|l|l|p{3.7cm}|} 
+\input{<<data>>}
+\end{supertabular}
+%\end{center}
+\end{document}

@@ -1,0 +1,85 @@
+%--------------------------------------------
+% sablona pro rozhodnuti o prijeti/neprijeti
+% PZK Gybon 2006
+%--------------------------------------------
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,left=2cm,right=2cm,nohead,nofoot,top=1cm,bottom=2cm]{geometry}
+\usepackage{templates/pzk}
+\usepackage{colortbl}
+\input{templates/defrec.tex}
+\input{<<vars>>}
+% ---- definice prevzate z vars_global ----
+\def\duvodAno{Uchazeè o~studium vyhovìl podmínkám pøijímacího øízení.}
+\def\duvodNe{
+O~pøijetí uchazeèù ke vzdìlávání ve støední ¹kole rozhoduje podle ustanovení \S\,59~odst.~2
+ a \S\,165 odst. 2 písm. f) ¹kolského zákona øeditel ¹koly, který v~souladu s~\S\,60~odst.~4 ¹kolského zákona stanovil a zveøejnil, ¾e nejvy¹¹í mo¾ný poèet pøijímaných uchazeèù do oboru vzdìlání uvedeného ve výroku rozhodnutí v~denní formì vzdìlávání je \if 3\Idstudium 90. \else 30. \fi Podle \S\,60~odst.~4 ¹kolského zákona stanovil a zveøejnil øeditel ¹koly kritéria pøijímacího øízení.
+
+Uchazeèi konali pøijímací zkou¹ku z~obecných studijních pøedpokladù, z~èeského jazyka a z~matematiky. Dále jim byly podle kritérií zapoèteny body odpovídající hodnocení z~pøedchozího vzdìlávání vèetnì úspì¹ného umístìní v~soutì¾ích.
+
+Pokud splní podmínky pøijímacího øízení více uchazeèù, ne¾ kolik lze pøijmout, potom podle \S\,60~odst.~14 ¹kolského zákona rozhoduje o~pøijetí jejich poøadí podle výsledku hodnocení pøijímacího øízení.
+
+Uchazeè získal v~pøijímacím øízení celkem \Celkem~b. (\Vstup~b. odpovídajících hodnocení z~pøedchozího vzdìlávání vèetnì úspì¹ného umístìní v~soutì¾ích, \Osp~b. z pøijímací zkou¹ky z~obecných studijních pøedpokladù, \M~b. z~pøijímací zkou¹ky z~matematiky, \Cj~b. z~pøijímací zkou¹ky z~èeského jazyka) a umístil se na \Poradiod.~místì mezi v¹emi uchazeèi. Vzhledem k~tomu, ¾e ke vzdìlávání v~oboru bylo pøijímáno 88 uchazeèù, nemohl být uchazeè ke vzdìlávání ve støední ¹kole pøijat. Nemohlo být zatím pøijato 90 uchazeèù, proto¾e nìkolik uchazeèù (2) vykoná zkou¹ku v náhradním termínu.}
+\def\poznamkaAno{Z dùvodu rozdìlení do tøíd a skupin vykonají pøijatí  ¾áci  
+testy  z~cizích  jazykù. Testy  z~jednotlivých jazykù probìhnou \textbf{\if 3\Idstudium
+ \testS \else \testPH \fi} od 15.00  v~budovì ¹koly (pokud ¾ák studoval pouze jeden jazyk, koná test pouze  z~jednoho  jazyka, jinak ze dvou jazykù). Schùzka rodièù pøijatých ¾ákù se  koná  \textbf{\if 3\Idstudium
+ \schuzkaS \else \schuzkaPH \fi} v~budovì ¹koly.}
+\def\Prijima{\if 1\Prijat\textbf{pøijímá}\else\textbf{nepøijímá}\fi}
+%-----------------------------------------------------------------------
+\def\Report{
+\ooo{20}{92}
+\Head\par
+\vspace{4mm}
+\noindent
+\parbox[t]{.4\linewidth}{È.j.: \textbf{\CjRozhod}\\
+V~Hradci Králové\\
+dne \terminRozhodnuti} \hfill  
+\raisebox{3mm}{
+\begin{tabular}[t]{|>{\columncolor[gray]{.93}}p{1cm}>{\columncolor[gray]{.93}}p{6cm}|}
+\hline
+&\sf\textbf{\if 1\ZastPohlavi Pan \else Paní \fi} \\
+&\sf\textbf{\ZastPrijmeni\ \ZastJmeno}\\
+&\sf\textbf{\Ulice}\\
+&\sf\textbf{\Psc\ \Misto}\\
+\hline
+\end{tabular}}\par
+\vspace{1cm}
+\begin{center}
+\resizebox{5cm}{5mm}{{\sc\Large Rozhodnutí}}\\[5mm]
+\end{center}
+
+Øeditel gymnázia, jeho¾ èinnost vykonává Gymnázium Bo¾eny Nìmcové, Hradec Králové, Pospí¹ilova tø. 324, rozhodl v~souladu s~\S\,59, \S\,60\if 3\Idstudium , \S\,61\fi\ a \S\ 165 odst. 2 písm. f) zákona è. 561/2004 Sb., o~pøed¹kolním, základním, støedním, vy¹¹ím odborném a jiném vzdìlávání (¹kolský zákon), v~platném znìní, v~souladu se zákonem è.~500/2004~Sb., správní øád, v~platném znìní, a v~souladu  s~vyhlá¹kou è. 671/2004 Sb., kterou se stanoví podrobnosti o~organizaci pøijímacího øízení ke vzdìlávání ve støedních ¹kolách, v~platném znìní, takto:\\[2mm]
+
+\textbf{\Jmeno\ \Prijmeni}, \if 1\Pohlavi narozen \else narozena \fi \Datnar, 
+bytem \Ulice, \Psc, \Misto, se od 1.~záøí \Rok\ \Prijima\ ke vzdìlávání na gymnáziu, jeho¾ èinnost vykonává Gymnázium Bo¾eny Nìmcové, Hradec Králové, Pospí¹ilova tø. 324, do 1. roèníku
+\if 1\Idstudium\textbf{\stdP}\fi 
+\if 2\Idstudium\textbf{\stdH}\fi 
+\if 3\Idstudium\textbf{\stdS}\fi 
+, denní forma vzdìlávání.\\
+
+\if 1\Prijat Uchazeè je povinen dle \S\,59 zákona è.~561/2004 Sb., o~pøed¹kolním, základním, støedním, vy¹¹ím odborném a jiném vzdìlávání (¹kolský zákon), do \predlozitVysvedceni\ pøedlo¾it vysvìdèení \if 1\Idstudium z~9.\,roèníku základní ¹koly dokladující splnìní povinné ¹kolní docházky. \else ze 7.\,roèníku základní ¹koly. \fi \\ \fi
+\vspace{1mm}
+\par\noindent
+\textbf{Odùvodnìní:}\\
+\if 1\Prijat \duvodAno \\ \fi
+\if 0\Prijat \duvodNe \\ \fi
+\vspace{1mm}
+\par\noindent
+\textbf{Pouèení:}\\
+Proti tomuto rozhodnutí lze podle \S\,60 odst. 19 ¹kolského zákona podat odvolání ve lhùtì 3~ pracovních dnù od jeho doruèení. Odvolání se podává u~øeditele gymnázia, jeho¾ èinnost vykonává Gymnázium Bo¾eny Nìmcové, Hradec Králové, Pospí¹ilova tø. 324, a rozhoduje o~nìm Krajský úøad Královéhradeckého kraje.\\
+\vfill
+\par\noindent
+Úèastník øízení:\, \textbf{\Jmeno\ \Prijmeni, nar. \Datnar} \hfill \reditel\\
+\reditelAdresa
+\if 1\Prijat{}
+\vspace{1mm}
+\par\noindent
+\textbf{Dùle¾ité poznámky:}\\
+\poznamkaAno \\
+\fi
+\newpage
+}
+\begin{document}
+\def\done{\Report}
+\input{<<data>>}
+\end{document}
+

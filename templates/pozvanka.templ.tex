@@ -1,0 +1,72 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,left=2cm,right=2cm,nohead,nofoot,top=1cm,bottom=2cm]{geometry}
+\usepackage{templates/pzk}
+\usepackage{colortbl}
+\input{templates/defrec.tex}
+\input{<<vars>>}
+\def\Report{
+\ooo{20}{92}
+%\ooo{30}{188}
+\Head{}\par
+\vspace{8.3mm}
+\noindent
+\parbox[t]{.4\linewidth}{\resizebox{5cm}{5mm}{{\sc\Large Pozvánka}}\\[3mm]
+{\scriptsize\sffamily Èíslo jednací: \CjPozv\\
+Spisová znaèka: \SpisZn }}
+\hfill 
+\begin{tabular}{|>{\columncolor[gray]{.95}}p{1cm}>{\columncolor[gray]{.95}}p{6cm}|}
+\hline
+& \bf\if 1\ZastPohlavi Pan \else Paní \fi \\
+& \bf\ZastPrijmeni\ \ZastJmeno\\
+& \bf\Ulice\\
+& \bf\Psc\ \Misto{}\\
+\hline
+\end{tabular}\par
+\vspace{25mm}
+k~\textbf{písemným pøijímacím zkou¹kám do 1.~roèníku\ \if 3\Idstudium{}\stdS\else\stdP\fi}\\
+pro \if 1\Pohlavi uchazeèe: \else uchazeèku: \fi\textbf{\Prijmeni\ \Jmeno}\\
+
+Písemné pøijímací zkou¹ky z~obecných studijních pøedpokladù, matematiky, èeského jazyka a literatury se konají formou testù SCIO do záznamových archù dne \if 1\kolo \textbf{\TerminDatum}\else\textbf{\terminII}\fi\ \textbf{\casPZK} v~budovì ¹koly na Pospí¹ilovì tøídì. Vezmìte s~sebou:
+\begin{itemize}
+\item psací potøeby (dvì èerné propisovací tu¾ky nebo tenký èerný fix do 0,5 mm, obyèejná tu¾ka, guma)
+%\item matematické, fyzikální a chemické tabulky pro Z©
+\end{itemize}
+Kalkulaèky ani tabulky nemohou ¾áci pou¾ívat.\\
+
+% dodatek pro humanitni tridu
+%\if 2\Idstudium  ®áci, kteøí se hlásí do jazykové tøídy, vykonají je¹tì po skonèení testù z~matematiky a èeského jazyka písemnou zkou¹ku z~jednoho cizího jazyka (mo¾no volit z~anglického, nìmeckého èi francouzského jazyka).\\\fi
+
+Doklady o~úspìchu v~soutì¾ích v~tomto nebo v~minulém ¹kolním roce lze dodateènì pøedlo¾it nejpozdìji do \if 1\kolo \textbf{\terminDoklady}\else\textbf{\terminDokladyII}\fi.\\
+
+Nemù¾ete--li se z~velmi vá¾ných dùvodù (nemoc), které musíte neprodlenì písemnì dolo¾it, zkou¹ek zúèastnit v~daném termínu, vykonáte zkou¹ku v~náhradním termínu, který je stanoven na \if 1\kolo \textbf{\terminNahradni}\else\textbf{\terminNahradniII}\fi\ v~budovì ¹koly.\\
+
+Do 1.~roèníku\ \if 3\Idstudium{}\stdS\else\stdP\fi\ bude pøijímáno \if 3\Idstudium{}90\else 30\fi\ ¾ákù. V~rámci pøijímacího øízení je uchazeè posuzován podle znalostí vyjádøených hodnocením na vysvìdèení z~pøedchozího vzdìlávání, výsledkù pøíjímacích zkou¹ek a umístìní v~soutì¾ích, které jsou vyjmenovány v~podrobných kritériích pøijímacího øízení. Podrobná kritéria  pøijímacího øízení jsou zveøejnìna na internetové adrese \texttt{http://www.gybon.cz/prijimacky}.\\
+
+Dne \textbf{\terminVyjadreni}\ je mo¾né se vyjádøit k podkladùm rozhodnutí.\\ 
+%Touto pozvánkou je zahájeno správní øízení ve vìci pøijetí uchazeèe do 1.~roèníku\ \if 3\Idstudium{}\stdS\else\stdP\fi.
+\vfill
+%\vspace{10mm}
+{\small
+\noindent
+Poznámka:\\
+Vyplnìný pøilo¾ený lístek s~volbou druhého jazyka odevzdejte pøi pøijímací zkou¹ce.\\
+Na internetové adrese \texttt{http://www.gybon.cz/pzk}}\ budou neoficiální výsledky jednotlivých uchazeèù pøístupné pod identifikaèním èíslem, které obdr¾í u~pøijímací zkou¹ky. 
+%Shroma¾ïování podkladù nutných pro rozhodnutí o~pøijetí (nepøijetí). 
+%Nevyzvednutá rozhodnutí budou odeslána po¹tou \textbf{\terminRozhodnutiPosta}.
+\par
+%\vspace{7mm}
+\vfill
+%\noindent V~Hradci Králové dne \terminPozvanka \hfill \raisebox{-10mm}{\includegraphics[scale=1]{\Podpis}}\hspace{5mm} \reditel\\
+\noindent V~Hradci Králové dne \terminPozvanka 
+%\parpic[l][t]{\raisebox{40mm}{\includegraphics[scale=1]{\Podpis}}}{\noindent \reditel\\ øeditel gymnázia}
+\hfill   \raisebox{0mm}{\includegraphics[scale=1]{\Podpis}}\\
+\noindent  \mbox{} \hfill \reditel\\ 
+\mbox{} \hfill øeditel gymnázia
+%\reditelAdresa}
+\newpage
+}
+\begin{document}
+\def\done{\Report}
+\input{<<data>>}
+\end{document}
+

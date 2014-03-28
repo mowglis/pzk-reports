@@ -1,0 +1,83 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% sablona pro Ceskou postu                 %
+% PZK Gybon                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{report}
+\usepackage{templates/pzk}
+\usepackage[a4paper,left=5mm,right=5mm,top=29mm,bottom=22mm,head=30mm,headsep=0mm,nofoot]{geometry}
+\usepackage{supertabular}
+%\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\def\odsaz{\mbox{\hspace{17mm}}}
+\lhead{\sf\vspace{5mm}
+\centering{\large\textbf{PO©TOVNÍ PODACÍ ARCH}}\\
+\begin{flushleft}
+%\odsaz {\small\textbf{Èeská po¹ta, s.p., IÈ 47114983}}\\
+\textbf{Podavatel:} \NazevGybon, \Adresa, \PscGybon\\
+\textbf{Odesíltel:} \NazevGybon, \Adresa, \PscGybon\\
+%\odsaz\textbf{Datum:} \terminPozvanka\\
+\end{flushleft}
+%\vspace{2mm}
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\pagestyle{fancy}
+\input{templates/defrec.tex}
+\input{<<vars>>}
+
+% telo tabulky
+\def\Report{
+%\multirow{3}{*} \mbox{} & \multirow{3}{*} \mbox{} & \ZastPrijmeni\ \ZastJmeno & \multirow{3}{*} \mbox{} &  \multirow{3}{*} \mbox{} &  \multirow{3}{*} \mbox{} \\ 
+\mbox{} & \mbox{} & \parbox[b][18.5mm]{48mm}{\ZastPrijmeni\ \ZastJmeno\\ \Ulice\\ \Psc\ \Misto} & \mbox{} &  \mbox{} & \mbox{}  \\ \hline
+}
+
+
+\def\done{\Report}
+
+\def\nf#1{{\normalsize\bfseries #1}}
+
+% zahlavi tabulky 
+\def\TabHead{%
+%\centering\nf{Pè} & \centering\nf{Podací znaky} & \centering\nf{Adresát} & \centering\nf{Dobírka} & \centering\nf{Cena} & \centering\nf{Poznámka} 
+%Poø & \mbox{} & Adresát & \mbox{} & Udaná & Poznámka \\
+%èíslo & Podací znaky & ulice, èíslo domu, & Dobírka & cena & doplòkové \\
+%\mbox{} & \mbox{} & PSÈ, místo urèení & \mbox{} & \mbox{} &  slu¾by  
+\mbox{} & \mbox{}  & \centering\nf{Adresát - pøíjmení, jméno} & \mbox{} & \mbox{} & \hspace{3mm}\nf{Poznámka,} \\
+\centering\nf{Poø.} & \centering\nf{Podací znaky} & \centering\nf{ulice, èíslo domu} & \centering\nf{Dobírka} & \centering\nf{Udaná} & \hspace{3.5mm}\nf{doplòkové} \\
+\centering\nf{èíslo}  & \mbox{} & \centering\nf{PSÈ, místo urèení} & \mbox{} & \centering\nf{cena} & \hspace{5mm}\nf{slu¾by} 
+}
+
+%***********************************************%
+%		zacatek dokumentu                
+%***********************************************%
+\begin{document}
+\begin{center}
+\sf
+%\HeadSimple
+%\vspace{1mm}
+\noindent
+%\renewcommand{\arraystretch}{1.65}
+\renewcommand{\arraystretch}{1}
+
+\tablefirsthead{\hline \TabHead\\ \hline}
+
+\tablehead{\hline \TabHead\\ \hline}
+
+\tabletail{
+\hline 
+\multicolumn{6}{l}{\footnotesize Èeská po¹ta, s.p., IÈ 47114983}\\
+}
+\tablelasttail{}
+
+{\small
+\begin{supertabular}{|p{8mm}|p{55mm}|p{48mm}|p{16mm}|p{15mm}|p{26mm}|} \hline
+\input{<<data>>}
+\end{supertabular}
+}
+
+\end{center}
+% tisk statistiky
+%\newpage
+%Poèet záznamù: \pocetposta
+\end{document}

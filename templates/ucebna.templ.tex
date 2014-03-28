@@ -1,0 +1,75 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% sablona pro vypis studentu v ucebne
+% PZK Gybon
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,11pt]{article}
+\usepackage[a4paper,left=2cm,right=2cm,nohead,nofoot,top=2cm,bottom=1.5cm]{geometry}
+\usepackage{templates/pzk}
+\usepackage{supertabular}
+\usepackage{colortbl}
+\input{templates/defrec.tex}
+\input{<<vars>>}
+%%% zahlavi stranky s vypisem ucebny
+\def\headUcebna{%
+\centering \par
+\HeadSimple
+{\small
+Pøijímací zkou¹ky do 
+\if 1\Idstudium{} \stdP\fi
+\if 2\Idstudium{} \stdH\fi
+\if 3\Idstudium{} \stdS\fi
+\\ 
+\if 1\kolo{} \termin, \fi
+\if 2\kolo{} \terminII, \fi
+\kolo.~kolo}\\
+\vspace{1cm}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|>{\columncolor[gray]{.92}}c|}
+\hline
+\Large\sf \textbf{Èíslo skupiny: \Iducebna{}}\\
+\Large\sf \textbf{Uèebna: \Jmeno{}}\\
+\Large\sf \textbf{Umístìní: \Misto{}}\\
+\Large\sf \textbf{Poèet uchazeèù: \Celkem{}}\\
+\hline
+\end{tabular}
+\vspace{1cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{center}
+\begin{supertabular}{p{1.5cm}ll}
+}
+\def\Report{%
+% odstrankovani
+\if +\Zps{} 
+\end{supertabular}
+\end{center} 
+\newpage 
+\fi
+% zahlavi nove ucebny
+\if *\Id{} \headUcebna 
+\else
+% bezny radek tabulky
+\centering\large \Id{} & \large \Prijmeni{} \Jmeno{} & \large \Zsnazev{} \\ \hline
+\fi
+}
+\def\done{\Report}
+\def\nf#1{{\Large\bfseries #1}}
+% zahlavi tabulky 
+\def\TabHead{\rowcolor[gray]{.9}\centering\nf{Id} & \nf{Pøíjmení a jméno} & \nf{Z©}}
+%*********************************************
+% 				zacatek dokumentu
+%*********************************************
+\begin{document}
+\sf\bfseries
+%\vspace{1mm}
+\noindent
+\tablefirsthead{\hline \TabHead{} \\ \hline}
+\tablehead{\hline \TabHead{} \\ \hline}
+\tabletail{%
+\hline
+\multicolumn{3}{r}{\dots \footnotesize\sl pokraèování}\\
+\hline}
+\tablelasttail{}
+\input{<<data>>}
+\end{supertabular}
+\end{center}
+\end{document}
